@@ -1,12 +1,17 @@
-# cat /etc/netplan/99_config.yaml 
+# cat /etc/netplan/99_config.yaml
 network:
   version: 2
   renderer: networkd
   ethernets:
     enp60s0:
+      dhcp4: true
+  bridges:
+    br-ex:
       addresses:
         - 10.0.0.250/24
       gateway4: 10.0.0.1
       nameservers:
               #search: [mydomain, otherdomain]
           addresses: [10.0.0.1, 8.8.8.8]
+      interfaces:
+        - enp60s0
