@@ -1,0 +1,25 @@
+# cat /etc/hosts
+127.0.0.1       localhost
+127.0.1.1       openstack
+10.0.0.250      openstack
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+# controller
+10.0.0.250       controller
+
+# compute1
+10.0.0.250      compute1
+
+# block1
+10.0.0.250      block1
+
+# object1
+10.0.0.250      object1
+
+# object2
+10.0.0.250      object2
