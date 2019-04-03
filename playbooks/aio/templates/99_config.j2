@@ -1,0 +1,17 @@
+# cat /etc/netplan/99_config.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    {{ interface_name }}:
+      dhcp4: true
+  bridges:
+    {{ PROVIDER_INTERFACE_NAME}} :
+      addresses:
+        - {{ ip_address_cidr }}
+      gateway4: {{ gateway }}
+      nameservers:
+              #search: [mydomain, otherdomain]
+          addresses: [{{ dns1 }}, {{ dns2 }}]
+      interfaces:
+        - {{ interface_name }}

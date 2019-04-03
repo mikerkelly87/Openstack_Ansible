@@ -1,0 +1,29 @@
+---
+#Things to turn into Variabls:
+
+hostname: # hostname
+interface_name: # interface name ie: br-ex
+ip_address_cidr: # CIDR ie: 10.0.0.0/24
+gateway: # Gateway ie: 10.0.0.1
+dns1: # DNS1 ie: 8.8.8.8
+dns2: # DNS2 ie: 8.8.4.4
+ADMIN_PASS: # Admin keystone user password
+CINDER_DBPASS: # Cinder database password
+CINDER_PASS:  # Cinder keystone user password
+DASH_DBPASS: # Dash database password
+DEMO_PASS: # Demo keystone user password
+GLANCE_DBPASS: # Glance database password
+GLANCE_PASS: # Glance keystone user password
+KEYSTONE_DBPASS: # Keystone database password
+METADATA_SECRET: # Metadata secret
+NEUTRON_DBPASS:  # Neutron database password
+NEUTRON_PASS: # Neutron keystone password
+NOVA_DBPASS: # Nova database password
+NOVA_PASS: # Nova keystone user password
+PLACEMENT_PASS: # Placement keystone password
+RABBIT_PASS: # RabbitMQ Password
+PLACEMENT_DBPASS: # Placement database password
+my_ip: # IP address of your server
+PROVIDER_INTERFACE_NAME: # Interface name for provider network ie: br-ex
+OVERLAY_INTERFACE_IP_ADDRESS: # Overlay Interface IP
+PHYSICAL_VOLUME: # drive for your Cinder LVM ie: /sdb/
