@@ -1,2 +1,22 @@
 ---
 # Install the apt packages
+# ppa:ansible/ansible
+##
+#- apt_repository:
+#    repo: ppa:ubuntu-cloud-archive/rocky-updates 
+#    validate_certs: no
+##
+#- apt_key:
+#   keyserver: keyserver.ubuntu.com
+#    id: '0x5EDB1B62EC4926EA'
+- shell: add-apt-repository cloud-archive:rocky
+
+- apt:
+    update_cache: yes
+    force: yes
+
+- apt:
+    name: '{{ item }}'
+    state: latest
+    force: yes
+  with_items: '{{ packages }}'

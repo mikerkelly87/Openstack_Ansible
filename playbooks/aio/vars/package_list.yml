@@ -1,38 +1,39 @@
 ---
 # List of Packages to be Installed
-- net-tools
-- openssh-server
-- vim
-- bridge-utils
-- software-properties-common
-- python-openstackclient
-- mariadb-server
-- python-pymysql
-- rabbitmq-server
-- memcached
-- python-memcache
-- etcd
-- keystone
-- apache2
-- libapache2-mod-wsgi
-- glance
-- nova-api
-- nova-conductor
-- nova-consoleauth
-- nova-novncproxy
-- nova-scheduler
-- nova-placement-api
-- nova-compute
-- neutron-server
-- neutron-plugin-ml2
-- neutron-linuxbridge-agent
-- neutron-l3-agent
-- neutron-dhcp-agent
-- neutron-metadata-agent
-- openstack-dashboard
-- cinder-api
-- cinder-scheduler
-- lvm2
-- thin-provisioning-tools
-- cinder-volume
-- cinder-backup
+packages:
+  - net-tools
+  - openssh-server
+  - vim
+  - bridge-utils
+  - software-properties-common
+  - python-openstackclient
+  - mariadb-server
+  - python-pymysql
+  - rabbitmq-server
+  - memcached
+  - python-memcache
+  - etcd
+  - keystone
+  - apache2
+  - libapache2-mod-wsgi
+  - glance
+  - nova-api
+  - nova-conductor
+  - nova-consoleauth
+  - nova-novncproxy
+  - nova-scheduler
+  - nova-placement-api
+  - nova-compute
+  - neutron-server
+  - neutron-plugin-ml2
+  - neutron-linuxbridge-agent
+  - neutron-l3-agent
+  - neutron-dhcp-agent
+  - neutron-metadata-agent
+  - openstack-dashboard
+  - cinder-api
+  - cinder-scheduler
+  - lvm2
+  - thin-provisioning-tools
+  - cinder-volume
+  - cinder-backup

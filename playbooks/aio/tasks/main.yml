@@ -1,6 +1,8 @@
 ---
 # tasks file for aio
-#tasks:
-#- include_tasks: install_packages.yml
+
+- name: Install Packages
+  include_tasks: install_packages.yml
+
 - name: Apply Config Files
   include_tasks: apply_configs.yml
