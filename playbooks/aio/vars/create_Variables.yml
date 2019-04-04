@@ -1,29 +1,29 @@
 ---
 #Things to turn into Variabls:
 
-hostname: # hostname
-interface_name: # interface name ie: br-ex
-ip_address_cidr: # CIDR ie: 10.0.0.0/24
-gateway: # Gateway ie: 10.0.0.1
-dns1: # DNS1 ie: 8.8.8.8
-dns2: # DNS2 ie: 8.8.4.4
-ADMIN_PASS: # Admin keystone user password
-CINDER_DBPASS: # Cinder database password
-CINDER_PASS:  # Cinder keystone user password
-DASH_DBPASS: # Dash database password
-DEMO_PASS: # Demo keystone user password
-GLANCE_DBPASS: # Glance database password
-GLANCE_PASS: # Glance keystone user password
-KEYSTONE_DBPASS: # Keystone database password
-METADATA_SECRET: # Metadata secret
-NEUTRON_DBPASS:  # Neutron database password
-NEUTRON_PASS: # Neutron keystone password
-NOVA_DBPASS: # Nova database password
-NOVA_PASS: # Nova keystone user password
-PLACEMENT_PASS: # Placement keystone password
-RABBIT_PASS: # RabbitMQ Password
-PLACEMENT_DBPASS: # Placement database password
-my_ip: # IP address of your server
-PROVIDER_INTERFACE_NAME: # Interface name for provider network ie: br-ex
-OVERLAY_INTERFACE_IP_ADDRESS: # Overlay Interface IP
-PHYSICAL_VOLUME: # drive for your Cinder LVM ie: /sdb/
+hostname: openstack # hostname
+interface_name: br-ex # interface name ie: br-ex
+ip_address_cidr: 10.0.0.0/24  # CIDR ie: 10.0.0.0/24
+gateway: 10.0.0.1  # Gateway ie: 10.0.0.1
+dns1: 8.8.8.8  # DNS1 ie: 8.8.8.8
+dns2: 8.8.4.4  # DNS2 ie: 8.8.4.4
+ADMIN_PASS: S3cur3  # Admin keystone user password
+CINDER_DBPASS: S3cur3  # Cinder database password
+CINDER_PASS: S3cur3   # Cinder keystone user password
+DASH_DBPASS: S3cur3  # Dash database password
+DEMO_PASS: S3cur3  # Demo keystone user password
+GLANCE_DBPASS: S3cur3  # Glance database password
+GLANCE_PASS: S3cur3  # Glance keystone user password
+KEYSTONE_DBPASS: S3cur3  # Keystone database password
+METADATA_SECRET: S3cur3  # Metadata secret
+NEUTRON_DBPASS: S3cur3   # Neutron database password
+NEUTRON_PASS: S3cur3  # Neutron keystone password
+NOVA_DBPASS: S3cur3  # Nova database password
+NOVA_PASS: S3cur3  # Nova keystone user password
+PLACEMENT_PASS: S3cur3  # Placement keystone password
+RABBIT_PASS: S3cur3  # RabbitMQ Password
+PLACEMENT_DBPASS: S3cur3  # Placement database password
+my_ip: 10.0.0.250  # IP address of your server
+PROVIDER_INTERFACE_NAME: br-ex  # Interface name for provider network ie: br-ex
+OVERLAY_INTERFACE_IP_ADDRESS: 10.0.0.250  # Overlay Interface IP
+PHYSICAL_VOLUME: /sdb/ # drive for your Cinder LVM ie: /sdb/
