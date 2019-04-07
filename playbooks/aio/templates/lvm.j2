@@ -6,7 +6,7 @@ config {
 }
 devices {
 	dir = "/dev"
-  filter = [ "a{{ PHYSICAL_VOLUME }}", "r/.*/"]
+  filter = [ "a/{{ PHYSICAL_VOLUME }}/", "r/.*/"]
 	scan = [ "/dev" ]
 	obtain_device_list_from_udev = 1
 	external_device_info_source = "none"

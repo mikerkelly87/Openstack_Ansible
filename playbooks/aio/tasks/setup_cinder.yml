@@ -2,26 +2,136 @@
 # Initialize Cinder
 
 - shell: openstack user create --domain default --password S3cur3 cinder
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack role add --project service --user cinder admin
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack service create --name cinderv2 --description "OpenStack Block Storage" volumev2
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack service create --name cinderv3 --description "OpenStack Block Storage" volumev3
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev2 public http://controller:8776/v2/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev2 internal http://controller:8776/v2/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev2 admin http://controller:8776/v2/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev3 public http://controller:8776/v3/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev3 internal http://controller:8776/v3/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne volumev3 admin http://controller:8776/v3/%\(project_id\)s
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "cinder-manage db sync" cinder
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
+  ignore_errors: yes
 
 - service:
     name: nova-api

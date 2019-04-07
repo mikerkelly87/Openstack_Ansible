@@ -1,0 +1,12 @@
+bugs
+
+- Make rabbitmq tasks use the rabbitmq_user module
+- Replace all the passwords in playbooks with the variable names
+- Currently the mysql user creation loop assumes all user's passwords will be the same
+- All the openstack commands are currently set to ignore_errors because if the commands runs a 2nd time it errors on a duplicate entry and errors the entire playbook
+- For some reason the glance service create commands allowed dulicates so the endpoint create commands failed due to this
+- Need to add to /etc/mysql/mariadb.conf.d/50-server.cnf :
+[mariadb]
+plugin_load_add = mysql_native_password
+(lineinfile under the [mariadb] line, then restart mysql. This has to happen before keystone initialization) 
+

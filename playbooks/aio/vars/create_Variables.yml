@@ -26,4 +26,4 @@ PLACEMENT_DBPASS: S3cur3  # Placement database password
 my_ip: 192.168.56.43  # IP address of your server
 PROVIDER_INTERFACE_NAME: br-ex  # Interface name for provider network ie: br-ex
 OVERLAY_INTERFACE_IP_ADDRESS: 192.168.56.43  # Overlay Interface IP
-PHYSICAL_VOLUME: sdb/ # drive for your Cinder LVM ie: sdb/
+PHYSICAL_VOLUME: sdb # drive for your Cinder LVM ie: sdb

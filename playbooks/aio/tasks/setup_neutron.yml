@@ -2,21 +2,75 @@
 # Initialize Neutron
 
 - shell: openstack user create --domain default --password S3cur3 neutron # The prompt will prompt for the password input
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack role add --project service --user neutron admin
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack service create --name neutron --description "OpenStack Networking" network
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network public http://controller:9696
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network internal http://controller:9696
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network admin http://controller:9696
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - service:
@@ -28,6 +82,15 @@
     state: restarted
 
 - shell: su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
 
 - service:
     name: nova-api

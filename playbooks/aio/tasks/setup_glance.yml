@@ -2,24 +2,87 @@
 # Initialize Glance
 
 - shell: openstack user create --domain default --password S3cur3 glance
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack role add --project service --user glance admin
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack service create --name glance --description "OpenStack Image" image
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image public http://controller:9292
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image internal http://controller:9292
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image admin http://controller:9292
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: su -s /bin/sh -c "glance-manage db_sync" glance
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - service:

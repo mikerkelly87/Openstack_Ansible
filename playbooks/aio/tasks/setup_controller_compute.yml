@@ -2,51 +2,195 @@
 # Initialize Controller and Compute
 
 - shell: openstack user create --domain default --password S3cur3 nova
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack role add --project service --user nova admin
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack service create --name nova --description "OpenStack Compute" compute
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack user create --domain default --password S3cur3 placement
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack role add --project service --user placement admin
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack service create --name placement --description "Placement API" placement
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement public http://controller:8778
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement internal http://controller:8778
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement admin http://controller:8778
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage api_db sync" nova
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage cell_v2 create_cell --name=cell1 --verbose" nova
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage db sync" nova
+  environment:
+    OS_PROJECT_DOMAIN_NAME: default
+    OS_USER_DOMAIN_NAME: default
+    OS_PROJECT_NAME: admin
+    OS_USERNAME: admin
+    OS_PASSWORD: S3cur3
+    OS_AUTH_URL: http://controller:5000/v3
+    OS_IDENTITY_API_VERSION: 3
+    OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
 
 - service:
