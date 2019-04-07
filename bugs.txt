@@ -9,4 +9,5 @@ bugs
 [mariadb]
 plugin_load_add = mysql_native_password
 (lineinfile under the [mariadb] line, then restart mysql. This has to happen before keystone initialization) 
-
+- Need to create the adminrc file in /root/
+- Need to find a way to pull the environment variables from a single file in the tasks
