@@ -1,0 +1,28 @@
+---
+# Initialize keystone
+- shell: su -s /bin/sh -c "keystone-manage db_sync" keystone
+
+- shell: keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+
+- shell: keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+
+- shell: keystone-manage bootstrap --bootstrap-password S3cur3 --bootstrap-admin-url http://controller:5000/v3/ --bootstrap-internal-url http://controller:5000/v3/ --bootstrap-public-url http://controller:5000/v3/ --bootstrap-region-id RegionOne
+
+- Lineinfile:
+    path: /etc/apache2/apache2.conf
+    state: present
+    line: 'ServerName controller'
+
+- service:
+    name: apache2
+    state: restarted
+
+- shell: openstack project create --domain default --description "Service Project" service
+
+- shell: openstack project create --domain default --description "Demo Project" myproject
+
+- shell: openstack user create --domain default --password S3cur3 myuser
+
+- shell: openstack role create myrole
+- shell: openstack role add --project myproject --user myuser myrole
+

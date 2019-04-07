@@ -12,3 +12,6 @@
 
 - name: Setup MySQL
   include_tasks: setup_mysql.yml
+
+- name: Setup Keystone
+  include_tasks: setup_keystone.yml
