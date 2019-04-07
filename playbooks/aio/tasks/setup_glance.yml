@@ -2,23 +2,30 @@
 # Initialize Glance
 
 - shell: openstack user create --domain default --password S3cur3 glance
+  ignore_errors: yes
 
 - shell: openstack role add --project service --user glance admin
+  ignore_errors: yes
 
 - shell: openstack service create --name glance --description "OpenStack Image" image
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image public http://controller:9292
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image internal http://controller:9292
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne image admin http://controller:9292
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "glance-manage db_sync" glance
+  ignore_errors: yes
 
 - service:
     name: glance-registry
     state: restarted
 
 - service:
-    Name: glance-api
+    name: glance-api
     state: restarted

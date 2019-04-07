@@ -2,16 +2,22 @@
 # Initialize Neutron
 
 - shell: openstack user create --domain default --password S3cur3 neutron # The prompt will prompt for the password input
+  ignore_errors: yes
 
 - shell: openstack role add --project service --user neutron admin
+  ignore_errors: yes
 
 - shell: openstack service create --name neutron --description "OpenStack Networking" network
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network public http://controller:9696
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network internal http://controller:9696
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne network admin http://controller:9696
+  ignore_errors: yes
 
 - service:
     name: nova-compute

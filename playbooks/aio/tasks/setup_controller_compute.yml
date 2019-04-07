@@ -2,36 +2,52 @@
 # Initialize Controller and Compute
 
 - shell: openstack user create --domain default --password S3cur3 nova
+  ignore_errors: yes
 
 - shell: openstack role add --project service --user nova admin
+  ignore_errors: yes
 
 - shell: openstack service create --name nova --description "OpenStack Compute" compute
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1
+  ignore_errors: yes
 
 - shell: openstack user create --domain default --password S3cur3 placement
+  ignore_errors: yes
 
 - shell: openstack role add --project service --user placement admin
+  ignore_errors: yes
 
 - shell: openstack service create --name placement --description "Placement API" placement
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement public http://controller:8778
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement internal http://controller:8778
+  ignore_errors: yes
 
 - shell: openstack endpoint create --region RegionOne placement admin http://controller:8778
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage api_db sync" nova
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage cell_v2 create_cell --name=cell1 --verbose" nova
+  ignore_errors: yes
 
 - shell: su -s /bin/sh -c "nova-manage db sync" nova
+  ignore_errors: yes
 
 - service:
     name: nova-api

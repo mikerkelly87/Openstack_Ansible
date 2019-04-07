@@ -38,6 +38,8 @@
     name: '{{item}}'
     priv: '*.*:ALL'
     state: present
+    password: S3cur3
+    host: '%'
     login_unix_socket: /var/run/mysqld/mysqld.sock
   with_items:
     - keystone
