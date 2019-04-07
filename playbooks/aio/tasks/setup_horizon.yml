@@ -1,0 +1,5 @@
+---
+# Restart Apache to Apply Horizon Apache Configs
+- service:
+    name: apache2
+    state: restarted

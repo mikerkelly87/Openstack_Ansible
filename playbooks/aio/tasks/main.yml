@@ -27,3 +27,6 @@
 
 - name: Setup Neutron
   include_tasks: setup_neutron.yml
+
+- name: Setup Horizon
+  include_tasks: setup_horizon.yml
