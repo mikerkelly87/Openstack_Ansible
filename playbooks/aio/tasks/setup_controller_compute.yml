@@ -1,0 +1,61 @@
+---
+# Initialize Controller and Compute
+
+- shell: openstack user create --domain default --password S3cur3 nova
+
+- shell: openstack role add --project service --user nova admin
+
+- shell: openstack service create --name nova --description "OpenStack Compute" compute
+
+- shell: openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1
+
+- shell: openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1
+
+- shell: openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1
+
+- shell: openstack user create --domain default --password S3cur3 placement
+
+- shell: openstack role add --project service --user placement admin
+
+- shell: openstack service create --name placement --description "Placement API" placement
+
+- shell: openstack endpoint create --region RegionOne placement public http://controller:8778
+
+- shell: openstack endpoint create --region RegionOne placement internal http://controller:8778
+
+- shell: openstack endpoint create --region RegionOne placement admin http://controller:8778
+
+- shell: su -s /bin/sh -c "nova-manage api_db sync" nova
+
+- shell: su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
+
+- shell: su -s /bin/sh -c "nova-manage cell_v2 create_cell --name=cell1 --verbose" nova
+
+- shell: su -s /bin/sh -c "nova-manage db sync" nova
+
+- service:
+    name: nova-api
+    state: restarted
+
+- service:
+    name: nova-consoleauth
+    state: restarted
+
+- service:
+    name: nova-scheduler
+    state: restarted
+
+- service:
+    name: nova-conductor
+    state: restarted
+
+- service:
+    name: nova-novncproxy
+    state: restarted
+
+- service:
+    name: nova-compute
+    state: restarted
+
+- shell: su -s /bin/sh -c "nova-manage cell_v2 discover_hosts --verbose" nova
+

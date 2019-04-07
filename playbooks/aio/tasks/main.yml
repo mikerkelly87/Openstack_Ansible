@@ -15,3 +15,15 @@
 
 - name: Setup Keystone
   include_tasks: setup_keystone.yml
+
+- name: Setup Glance
+  include_tasks: setup_glance.yml
+
+- name: Enable etcd Service
+  include_tasks: enable_etcd.yml
+
+- name: Setup Controller and Compute
+  include_tasks: setup_controller_compute.yml
+
+- name: Setup Neutron
+  include_tasks: setup_neutron.yml
