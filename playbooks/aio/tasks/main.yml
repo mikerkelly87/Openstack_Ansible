@@ -30,3 +30,6 @@
 
 - name: Setup Horizon
   include_tasks: setup_horizon.yml
+
+- name: Setup Cinder
+  include_tasks: setup_cinder.yml

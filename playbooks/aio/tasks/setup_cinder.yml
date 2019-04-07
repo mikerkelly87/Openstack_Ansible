@@ -1,0 +1,49 @@
+---
+# Initialize Cinder
+
+- shell: openstack user create --domain default --password S3cur3 cinder
+
+- shell: openstack role add --project service --user cinder admin
+
+- shell: openstack service create --name cinderv2 --description "OpenStack Block Storage" volumev2
+
+- shell: openstack service create --name cinderv3 --description "OpenStack Block Storage" volumev3
+
+- shell: openstack endpoint create --region RegionOne volumev2 public http://controller:8776/v2/%\(project_id\)s
+
+- shell: openstack endpoint create --region RegionOne volumev2 internal http://controller:8776/v2/%\(project_id\)s
+
+- shell: openstack endpoint create --region RegionOne volumev2 admin http://controller:8776/v2/%\(project_id\)s
+
+- shell: openstack endpoint create --region RegionOne volumev3 public http://controller:8776/v3/%\(project_id\)s
+
+- shell: openstack endpoint create --region RegionOne volumev3 internal http://controller:8776/v3/%\(project_id\)s
+
+- shell: openstack endpoint create --region RegionOne volumev3 admin http://controller:8776/v3/%\(project_id\)s
+
+- shell: su -s /bin/sh -c "cinder-manage db sync" cinder
+
+- service:
+    name: nova-api
+    state: restarted
+
+- service:
+    name: cinder-scheduler
+    state: restarted
+
+- service:
+    name: apache2
+    state: restarted
+
+- shell: pvcreate /dev/{{PHYSICAL_VOLUME}}
+
+- shell: vgcreate cinder-volumes /dev/{{PHYSICAL_VOLUME}}
+
+- service:
+    name: tgt
+    state: restarted
+
+- service:
+    name: cinder-volume
+    state: restarted
+
