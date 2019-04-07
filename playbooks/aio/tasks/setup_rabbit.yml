@@ -7,6 +7,10 @@
 #    read_priv: .*
 #    write_priv: .*
 #    state: present 
+- rabbitmq_user:
+    user: openstack
+    state: absent
+
 - shell: rabbitmqctl add_user openstack {{ RABBIT_PASS }}
 
 - shell: rabbitmqctl set_permissions openstack ".*" ".*" ".*"
