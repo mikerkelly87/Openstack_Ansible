@@ -1,0 +1,49 @@
+---
+
+- apt:
+    name: '{{item}}'
+    state: latest
+    update_cache: yes
+  with_items:
+    - mariadb-server
+    - mariadb-client
+
+- service:
+    name: mysql
+    state: started
+    enabled: yes
+
+- apt:
+    name: python-mysqldb
+    state: latest
+
+- mysql_db:
+    name: '{{item}}'
+    state: present
+    collation: utf8_general_ci
+  with_items:
+    - keystone
+    - glance
+    - nova_api
+    - nova
+    - nova_cell0
+    - placement
+    - neutron
+    - cinder
+
+- mysql_user:
+    name: '{{item}}'
+    password: S3cur3
+    priv: '*.*:ALL'
+    host: localhost
+    state: present
+  with_items:
+    - keystone
+    - glance
+    - nova_api
+    - nova
+    - nova_cell0
+    - placement
+    - neutron
+    - cinder
+
