@@ -11,3 +11,11 @@ plugin_load_add = mysql_native_password
 (lineinfile under the [mariadb] line, then restart mysql. This has to happen before keystone initialization) 
 - Need to create the adminrc file in /root/
 - Need to find a way to pull the environment variables from a single file in the tasks
+
+List of files that need conditionals made:
+setup_rabbit.yml
+setup_keystone.yml
+setup_glance.yml
+setup_controller_compute.yml
+setup_neutron.yml
+setup_cinder.yml
