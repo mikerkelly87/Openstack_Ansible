@@ -6,7 +6,7 @@
 
 - shell: keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
 
-- shell: keystone-manage bootstrap --bootstrap-password S3cur3 --bootstrap-admin-url http://controller:5000/v3/ --bootstrap-internal-url http://controller:5000/v3/ --bootstrap-public-url http://controller:5000/v3/ --bootstrap-region-id RegionOne
+- shell: keystone-manage bootstrap --bootstrap-password '{{ADMIN_PASS}}' --bootstrap-admin-url http://controller:5000/v3/ --bootstrap-internal-url http://controller:5000/v3/ --bootstrap-public-url http://controller:5000/v3/ --bootstrap-region-id RegionOne
 
 - lineinfile:
     path: /etc/apache2/apache2.conf
@@ -23,59 +23,59 @@
     OS_USER_DOMAIN_NAME: default
     OS_PROJECT_NAME: admin
     OS_USERNAME: admin
-    OS_PASSWORD: S3cur3
+    OS_PASSWORD: '{{ADMIN_PASS}}'
     OS_AUTH_URL: http://controller:5000/v3
     OS_IDENTITY_API_VERSION: 3
     OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
   #debug: msg='This might fail if the openstack resource was already created'
 
-- shell: openstack project create --domain default --description "Demo Project" myproject
+- shell: openstack project create --domain default --description "'{{PROJECT_NAME}}'" '{{PROJECT_NAME}}'
   environment:
     OS_PROJECT_DOMAIN_NAME: default
     OS_USER_DOMAIN_NAME: default
     OS_PROJECT_NAME: admin
     OS_USERNAME: admin
-    OS_PASSWORD: S3cur3
+    OS_PASSWORD: '{{ADMIN_PASS}}'
     OS_AUTH_URL: http://controller:5000/v3
     OS_IDENTITY_API_VERSION: 3
     OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
   #debug: msg='This might fail if the openstack resource was already created'
 
-- shell: openstack user create --domain default --password S3cur3 myuser
+- shell: openstack user create --domain default --password '{{PROJECT_PASS}}' '{{PROJECT_USER}}'
   environment:
     OS_PROJECT_DOMAIN_NAME: default
     OS_USER_DOMAIN_NAME: default
     OS_PROJECT_NAME: admin
     OS_USERNAME: admin
-    OS_PASSWORD: S3cur3
+    OS_PASSWORD: '{{ADMIN_PASS}}'
     OS_AUTH_URL: http://controller:5000/v3
     OS_IDENTITY_API_VERSION: 3
     OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
   #debug: msg='This might fail if the openstack resource was already created'
 
-- shell: openstack role create myrole
+- shell: openstack role create '{{PROJECT_ROLE}}'
   environment:
     OS_PROJECT_DOMAIN_NAME: default
     OS_USER_DOMAIN_NAME: default
     OS_PROJECT_NAME: admin
     OS_USERNAME: admin
-    OS_PASSWORD: S3cur3
+    OS_PASSWORD: '{{ADMIN_PASS}}'
     OS_AUTH_URL: http://controller:5000/v3
     OS_IDENTITY_API_VERSION: 3
     OS_IMAGE_API_VERSION: 2
   ignore_errors: yes
   #debug: msg='This might fail if the openstack resource was already created'
 
-- shell: openstack role add --project myproject --user myuser myrole
+- shell: openstack role add --project '{{PROJECT_NAME}}' --user '{{PROJECT_USER}}' '{{PROJECT_ROLE}}'
   environment:
     OS_PROJECT_DOMAIN_NAME: default
     OS_USER_DOMAIN_NAME: default
     OS_PROJECT_NAME: admin
     OS_USERNAME: admin
-    OS_PASSWORD: S3cur3
+    OS_PASSWORD: '{{ADMIN_PASS}}'
     OS_AUTH_URL: http://controller:5000/v3
     OS_IDENTITY_API_VERSION: 3
     OS_IMAGE_API_VERSION: 2
