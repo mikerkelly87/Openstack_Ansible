@@ -3,9 +3,9 @@ This will install openstack onto a single VM
 Steps:
 
 1) Create an Ubuntu 18.04 VM  
- You probably want to give it 2-4 vCPUs and 8GB of RAM
+ You probably want to give it 2-4 vCPUs and 8GB of RAM and ~15GB Storage  
 
-2) Attach a 2nd disk  
+2) Attach a 2nd disk ~20GB  
 
 3) SSH into the VM as root  
 
