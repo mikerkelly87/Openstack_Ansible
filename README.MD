@@ -33,7 +33,7 @@ Steps:
   `gateway` (based on the network information of your VM)  
   `my_ip` (The IP of your VM)  
   `OVERLAY_INTERFACE_IP_ADDRESS` (The IP of your VM)  
-  `PHYSICAL_VOLUME` (The 2nd disk you attached the the VM ex: `sdb`, `vdb`, `etc`)  
+  `PHYSICAL_VOLUME` (The 2nd disk you attached to the VM ex: `sdb`, `vdb`, `etc`)  
 
 10) Run the playbook to apply the Openstack `aio` (all-in-one) role to your VM  
  `# ansible-playbook /root/openstack_ansible/playbooks/aio.yml`  
