@@ -3,8 +3,8 @@
 
 hostname: openstack # hostname
 interface_name: br-ex # interface name ie: br-ex
-ip_address_cidr: 192.168.56.0/24  # CIDR ie: 10.0.0.0/24
-gateway: 192.168.56.1  # Gateway ie: 10.0.0.1
+ip_address_cidr: 192.168.122.0/24  # CIDR ie: 10.0.0.0/24
+gateway: 192.168.122.1  # Gateway ie: 10.0.0.1
 dns1: 8.8.8.8  # DNS1 ie: 8.8.8.8
 dns2: 8.8.4.4  # DNS2 ie: 8.8.4.4
 ADMIN_PASS: S3cur3  # Admin keystone user password
@@ -27,7 +27,7 @@ PROJECT_NAME: Project123 # Name of the project to create
 PROJECT_USER: user1 # User for the project
 PROJECT_ROLE: role1 # Role for the project
 PROJECT_PASS: role1 # Password for the project user
-my_ip: 192.168.56.43  # IP address of your server
+my_ip: 192.168.122.183  # IP address of your server
 PROVIDER_INTERFACE_NAME: br-ex  # Interface name for provider network ie: br-ex
-OVERLAY_INTERFACE_IP_ADDRESS: 192.168.56.43  # Overlay Interface IP
-PHYSICAL_VOLUME: sdb # drive for your Cinder LVM ie: sdb
+OVERLAY_INTERFACE_IP_ADDRESS: 192.168.122.183  # Overlay Interface IP
+PHYSICAL_VOLUME: vdb # drive for your Cinder LVM ie: sdb
